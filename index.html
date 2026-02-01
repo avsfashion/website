@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -19,80 +19,76 @@
             --secondary-gold: #F3E5AB;
             --dark-slate: #1A1A1A;
             --off-white: #F9F9F9;
-            --text-grey: #666;
+            --glass-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--off-white);
             color: var(--dark-slate);
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .navbar-brand {
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Navbar Styling */
+        /* --- Premium Navbar --- */
         .navbar {
-            background-color: #fff;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             padding: 1rem 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            background: #fff;
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--dark-slate);
+            text-transform: uppercase;
         }
 
         .nav-link {
             color: var(--dark-slate);
             font-weight: 500;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
-            margin: 0 10px;
+            margin: 0 12px;
+            position: relative;
         }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-gold);
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s;
         }
 
-        /* Hero Section */
-        .hero {
-            /* Updated working Hero Image */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center 20%;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
+        /* --- Buttons --- */
         .btn-gold {
             background-color: var(--primary-gold);
             color: white;
-            padding: 12px 35px;
+            padding: 12px 30px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
             border-radius: 0;
             border: 1px solid var(--primary-gold);
             transition: all 0.3s;
@@ -101,17 +97,76 @@
         .btn-gold:hover {
             background-color: transparent;
             color: var(--primary-gold);
-            border-color: var(--primary-gold);
         }
 
-        /* Section Styling */
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--dark-slate);
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0;
+            border: 1px solid var(--dark-slate);
+            transition: all 0.3s;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--dark-slate);
+            color: white;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            /* NEW HERO IMAGE: Elegant dark saree */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner2.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- Section Styling --- */
         .section-padding {
-            padding: 80px 0;
+            padding: 90px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
+            animation: fadeIn 1s ease-out;
         }
 
         .section-title h2 {
@@ -121,29 +176,30 @@
         }
 
         .section-title .line {
-            width: 60px;
-            height: 3px;
+            width: 70px;
+            height: 2px;
             background-color: var(--primary-gold);
             margin: 0 auto;
         }
 
-        /* Category Cards */
+        /* --- Category Cards --- */
         .category-card {
             position: relative;
             overflow: hidden;
             margin-bottom: 30px;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         .category-card img {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
         .category-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .category-overlay {
@@ -151,81 +207,92 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px 20px 20px;
             color: white;
+            text-align: center;
         }
 
-        /* Product Cards */
+        /* --- Product Cards --- */
         .product-card {
             background: #fff;
             border: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             margin-bottom: 30px;
+            border-radius: 0;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         }
 
         .product-img-wrapper {
             position: relative;
             overflow: hidden;
-            height: 450px;
+            height: 480px;
         }
 
         .product-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.03);
         }
 
         .card-body {
-            padding: 25px;
+            padding: 30px 20px;
             text-align: center;
         }
 
         .product-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+            font-size: 1.6rem;
+            margin: 5px 0;
         }
 
         .product-category {
             color: var(--primary-gold);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
             display: block;
+            font-weight: 600;
         }
 
         .btn-whatsapp {
             background-color: #25D366;
             color: white;
-            border-radius: 50px;
+            border-radius: 0;
             padding: 10px 25px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             margin-top: 15px;
             border: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-whatsapp:hover {
-            background-color: #1ebc57;
+            background-color: #128C7E;
             color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
 
-        /* Footer */
+        /* --- Footer --- */
         footer {
             background-color: var(--dark-slate);
             color: white;
             padding: 80px 0 30px;
+            border-top: 5px solid var(--primary-gold);
         }
 
         .footer-brand {
@@ -236,11 +303,12 @@
         }
         
         .footer-links a {
-            color: #ccc;
+            color: #aaa;
             text-decoration: none;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             transition: color 0.2s;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
@@ -249,13 +317,37 @@
 
         .social-icons a {
             color: white;
-            margin-right: 15px;
-            font-size: 1.2rem;
+            margin-right: 20px;
+            font-size: 1.3rem;
             transition: color 0.3s;
         }
 
         .social-icons a:hover {
             color: var(--primary-gold);
+        }
+        
+        .footer-contact i {
+            width: 25px;
+            color: var(--primary-gold);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-btns { flex-direction: column; width: 80%; }
+            .btn-gold, .btn-outline-gold { width: 100%; }
+            .navbar-brand { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -264,16 +356,25 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">SATHVI COLLECTIONS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border:none;">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#collections">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collections">Collections</a></li>
                     <li class="nav-item"><a class="nav-link" href="#featured">New Arrivals</a></li>
-                    <li class="nav-item">
-                        <a class="btn btn-gold ms-3" href="https://wa.me/919999999?text=Hi%20Sathvi%20Collections,%20I%20would%20like%20to%20know%20more%20about%20your%20products.">Contact Us</a>
+                    
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-outline-gold" href="https://wa.me/c/919746015580" target="_blank">
+                            <i class="fas fa-store me-2"></i> Catalogue
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                         <a class="btn btn-gold" href="https://whatsapp.com/channel/0029Vb7Vnwc0LKZEnsQg2I3V" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Channel
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -281,10 +382,15 @@
     </nav>
 
     <section id="home" class="hero">
-        <div class="container">
+        <div class="hero-content container">
             <p>Elegance Redefined</p>
             <h1>Timeless Ethnic Wear</h1>
-            <a href="#featured" class="btn btn-gold">Explore Collection</a>
+            <div class="hero-btns">
+                <a href="#featured" class="btn btn-gold">Explore Collection</a>
+                <a href="https://whatsapp.com/channel/0029Vb7Vnwc0LKZEnsQg2I3V" target="_blank" class="btn btn-outline-gold" style="color: white; border-color: white;">
+                    Join Our Channel
+                </a>
+            </div>
         </div>
     </section>
 
@@ -297,7 +403,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop" alt="Sarees">
+                        <img src="designer.jpg" alt="Sarees">
                         <div class="category-overlay">
                             <h3>Designer Sarees</h3>
                             <p>Silk, Georgette & Handloom</p>
@@ -306,7 +412,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Lehengas">
+                        <img src="bridal.jpg" alt="Lehengas">
                         <div class="category-overlay">
                             <h3>Bridal Lehengas</h3>
                             <p>Handcrafted for your special day</p>
@@ -315,7 +421,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Kurtis">
+                        <img src="kurti.jpg" alt="Kurtis">
                         <div class="category-overlay">
                             <h3>Premium Kurtis</h3>
                             <p>Contemporary styles for daily wear</p>
@@ -338,13 +444,13 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Product">
+                            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Blue Saree">
                         </div>
                         <div class="card-body">
                             <span class="product-category">Kanchipuram Silk</span>
                             <h4 class="product-title">Royal Blue Gold Zari</h4>
                             <p class="text-muted small">Pure silk with intricate gold weaving.</p>
-                            <a href="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" 
+                            <a href="https://wa.me/919746015580?text=Hi%20Sathvi%20Collections,%20I%20am%20interested%20in%20enquiring%20about%20the%20'Royal%20Blue%20Gold%20Zari%20Saree'." 
                                class="btn btn-whatsapp" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Enquire Now
                             </a>
@@ -355,13 +461,13 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Product">
+                            <img src="dupatta.jpg" alt="Salwar Set">
                         </div>
                         <div class="card-body">
                             <span class="product-category">Designer Salwar</span>
                             <h4 class="product-title">Emerald Velvet Set</h4>
                             <p class="text-muted small">Includes hand-embroidered dupatta.</p>
-                            <a href="https://wa.me/919999999?text=Hi%20Sathvi%20Collections,%20I%20am%20interested%20in%20enquiring%20about%20the%20'Emerald%20Velvet%20Set'." 
+                            <a href="https://wa.me/919746015580?text=Hi%20Sathvi%20Collections,%20I%20am%20interested%20in%20enquiring%20about%20the%20'Emerald%20Velvet%20Set'." 
                                class="btn btn-whatsapp" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Enquire Now
                             </a>
@@ -372,13 +478,13 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-img-wrapper">
-                          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" alt="Product">
+                            <img src="gown.jpg" alt="Gown">
                         </div>
                         <div class="card-body">
                             <span class="product-category">Party Wear</span>
                             <h4 class="product-title">Floral Organza Gown</h4>
                             <p class="text-muted small">Lightweight with pastel floral prints.</p>
-                            <a href="https://wa.me/919999999?text=Hi%20Sathvi%20Collections,%20I%20am%20interested%20in%20enquiring%20about%20the%20'Floral%20Organza%20Gown'." 
+                            <a href="https://wa.me/919746015580?text=Hi%20Sathvi%20Collections,%20I%20am%20interested%20in%20enquiring%20about%20the%20'Floral%20Organza%20Gown'." 
                                class="btn btn-whatsapp" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Enquire Now
                             </a>
@@ -396,25 +502,27 @@
                     <div class="footer-brand">Sathvi Collections</div>
                     <p class="text-white-50">Bringing you the finest collection of ethnic wear, curated with love and tradition. Quality you can trust, designs you will love.</p>
                     <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb7Vnwc0LKZEnsQg2I3V" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/sathvi.collections?igsh=d3c3cWpreDNmYWt2"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#"><i class="fab fa-facebook"></i></a> -->
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <h5 class="mb-4">Quick Links</h5>
                     <div class="footer-links">
                         <a href="#home">Home</a>
-                        <a href="#collections">Categories</a>
+                        <a href="https://wa.me/c/919746015580" target="_blank">View Catalogue</a>
+                        <a href="https://whatsapp.com/channel/0029Vb7Vnwc0LKZEnsQg2I3V" target="_blank">Join Channel</a>
                         <a href="#featured">New Arrivals</a>
-                        <a href="#">Size Guide</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <h5 class="mb-4">Contact Sales</h5>
-                    <p class="text-white-50"><i class="fab fa-whatsapp me-2"></i> +91 99999 99</p>
-                    <p class="text-white-50"><i class="far fa-envelope me-2"></i> sales@sathvicollections.com</p>
-                    <p class="text-white-50"><i class="fas fa-map-marker-alt me-2"></i> Kerala, India</p>
+                    <div class="footer-contact text-white-50">
+                        <p><i class="fab fa-whatsapp"></i> +91 97460 15580</p>
+                        <p><i class="far fa-envelope"></i> avsfashion5580@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Kerala, India</p>
+                    </div>
                 </div>
             </div>
             <hr class="border-secondary mt-5">
@@ -431,11 +539,11 @@
     <script>
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
-                document.querySelector('.navbar').style.boxShadow = "0 2px 15px rgba(0,0,0,0.1)";
+                document.querySelector('.navbar').classList.add('scrolled');
             } else {
-                document.querySelector('.navbar').style.boxShadow = "0 2px 15px rgba(0,0,0,0.05)";
+                document.querySelector('.navbar').classList.remove('scrolled');
             }
         });
     </script>
 </body>
-</html>    
+</html>
